@@ -30,7 +30,7 @@ A trading bot designed to scan and execute trades on the Solana blockchain throu
 ## Installation
 ```bash
 git clone [repository]
-cd pumpfun-sniper
+cd solana-pumpfun-sniper
 npm install
 ```
 
