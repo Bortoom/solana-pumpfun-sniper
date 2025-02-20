@@ -1,0 +1,6 @@
+{
+  "RPC_ENDPOINT": "https://mainnet.helius-rpc.com/?api-key=938bea3c-b707-43ce-a59f-1eb2695f759b",
+  "RPC_WEBSOCKET_ENDPOINT": "wss://mainnet.helius-rpc.com/?api-key=938bea3c-b707-43ce-a59f-1eb2695f759b",
+  "Slippage": 100,
+  "PAYERPRIVATEKEY": ""
+}

